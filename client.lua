@@ -4,7 +4,7 @@ local CHECK_RADIUS = 2.0
 local ROULETTE_TABLE_PROPS = {
     {
         label = "Roulette Table",
-        model = `p_roulettetable01x`, -- Replace with the correct model for the roulette table
+        model = `p_roulettetable01x`, 
         offset = vector3(0.0, 0.0, 0.0),
         description = "A portable roulette table for gambling"
     }
@@ -138,7 +138,7 @@ RegisterNetEvent('rsg-roulette:client:placeRouletteTable', function(rouletteTabl
     SetEntityHeading(rouletteWheel, heading)
     FreezeEntityPosition(rouletteWheel, true)
     
-    -- Attach the wheel to the table
+   
     AttachEntityToEntity(rouletteWheel, rouletteTableObject, 0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, true, true, false, true, 1, true)
     print("ROULETTE: Wheel attached to table")
     
@@ -166,7 +166,7 @@ RegisterNetEvent('rsg-roulette:client:pickupRouletteTable', function()
     Wait(2000)
 
     if deployedRouletteTable then
-        -- Delete the roulette wheel and table
+       
         local children = GetAttachedObjects(deployedRouletteTable)
         for _, child in ipairs(children) do
             print("ROULETTE: Deleting attached object: " .. child)
@@ -190,7 +190,7 @@ RegisterNetEvent('rsg-roulette:client:pickupRouletteTable', function()
     })
 end)
 
--- Function to get all objects attached to an entity
+
 function GetAttachedObjects(entity)
     local attachedObjects = {}
     local entities = GetGamePool('CObject')
@@ -208,7 +208,7 @@ AddEventHandler('onResourceStop', function(resourceName)
     if GetCurrentResourceName() ~= resourceName then return end
     
     if deployedRouletteTable then
-        -- Delete the roulette wheel and table
+        
         local children = GetAttachedObjects(deployedRouletteTable)
         for _, child in ipairs(children) do
             DeleteObject(child)
